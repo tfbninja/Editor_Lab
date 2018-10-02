@@ -1,5 +1,3 @@
-package editorjavaffx;
-
 public class Editor1 implements Ed {
 
     private String pre, post;
