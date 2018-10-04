@@ -1,3 +1,6 @@
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -48,8 +51,25 @@ public class EditorView extends Application {
                 } else if (event.getCode() == KeyCode.RIGHT) {
 
                     editor = editor.rightArrow();
+                } else if (event.getCode() == KeyCode.DELETE) {
+                    editor = editor.delete();
+                } else if (event.getCode() == KeyCode.BACK_SPACE) {
+                    editor = editor.backspace();
+                } else if (event.getCode() == KeyCode.HOME) {
+                    editor = editor.homeKey();
+                } else if (event.getCode() == KeyCode.END) {
+                    editor = editor.endKey();
                 } else {
                     editor = editor.insertString((event.getCode().toString().toLowerCase().charAt(0)));
+                    if (editor.getBefore().equals("yeetus")) {
+                        editor = editor.yeetus(editor.getAfter().length());
+                    }
+                    if (editor.getBefore().equals("autoyeetus")) {
+                        for (int i = 0; i <= 99; i++) {
+                            editor = editor.auto();
+
+                        }
+                    }
                 }
                 draw();
             }

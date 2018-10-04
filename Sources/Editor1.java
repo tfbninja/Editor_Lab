@@ -1,3 +1,6 @@
+
+import java.util.Random;
+
 public class Editor1 implements Ed {
 
     private String pre, post;
@@ -20,34 +23,59 @@ public class Editor1 implements Ed {
     }
 
     public Editor1 rightArrow() {
-        return new Editor1(pre + post.substring(0, 1),
-                post.substring(1));
+        if (post.length() >= 1) {
+            return new Editor1(pre + post.substring(0, 1), post.substring(1));
+        } else {
+            return new Editor1(pre, post);
+        }
 
     }
 
     public Ed leftArrow() {
-        return new Editor1("not", "finished");
+        return new Editor1(pre.substring(0, pre.length() - 1), (pre.substring(pre.length() - 1)) + post);
     }
 
     public Ed delete() {
-        return new Editor1("not", "finished");
+        if (post.length() > 0) {
+            return new Editor1(pre, post.substring(1));
+        } else {
+            return new Editor1(pre, post);
+        }
     }
 
     public Ed backspace() {
-        return new Editor1("not", "finished");
+        if (pre.length() > 0) {
+            return new Editor1(pre.substring(0, pre.length() - 1), post);
+        } else {
+            return new Editor1(pre, post);
+        }
     }
 
-    public Ed insertString(char c) 
-    {
-        return new Editor1("not", "finished");
+    public Ed insertString(char c) {
+        return new Editor1(pre + c, post);
+
     }
 
     public Ed homeKey() {
-        return new Editor1("not", "finished");
+        return new Editor1("", pre + post);
     }
 
     public Ed endKey() {
-        return new Editor1("not", "finished");
+        return new Editor1(pre + post, "");
+    }
+
+    public Ed yeetus(int amt) {
+        String b = "";
+        Random test = new Random();
+        for (int i = 0; i <= amt - 1; i++) {
+            b += (char) (test.nextInt(430) + 161);
+        }
+        return new Editor1(b, "");
+    }
+
+    public Ed auto() {
+        Random test = new Random();
+        return new Editor1(pre + (char) (test.nextInt(430) + 161), post);
     }
 
     public static void main(String[] args) {
