@@ -32,7 +32,11 @@ public class Editor1 implements Ed {
     }
 
     public Ed leftArrow() {
-        return new Editor1(pre.substring(0, pre.length() - 1), (pre.substring(pre.length() - 1)) + post);
+        if (pre.length() >= 1) {
+            return new Editor1(pre.substring(0, pre.length() - 1), (pre.substring(pre.length() - 1)) + post);
+        } else {
+            return new Editor1(pre, post);
+        }
     }
 
     public Ed delete() {
