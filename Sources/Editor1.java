@@ -68,7 +68,7 @@ public class Editor1 implements Ed {
         return new Editor1(pre + post, "");
     }
 
-    public Ed yeetus(int amt) {
+    public Ed yeetus(int amt) { //easter egg :)
         String b = "";
         Random test = new Random();
         for (int i = 0; i <= amt - 1; i++) {
